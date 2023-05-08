@@ -9,6 +9,7 @@ var (
 	ErrTired = errors.New("cannot hunt, i am really tired")
 	ErrNotHungry = errors.New("cannot hunt, i am not hungry")
 	ErrPreyEscaped = errors.New("could not catch it")
+	ErrNotPrey = errors.New("prey cannot be nil")
 
 )
 
@@ -33,6 +34,9 @@ func (s *Shark) Hunt(p *Prey) error {
 	if p.speed >= s.speed {
 		s.tired = true
 		return ErrPreyEscaped
+	} 
+	if p.name == "" && p.speed == 0 {
+		return ErrNotPrey
 	}
 
 	s.hungry = false
