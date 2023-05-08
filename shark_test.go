@@ -7,6 +7,26 @@ import (
 )
 
 func TestSharkHuntsSuccessfully(t *testing.T) {
+	// arrange
+	shark := Shark{
+		hungry: true,
+		tired: false,
+		speed: 20,
+	}
+
+	prey := Prey{
+		name: "fish",
+		speed: 10,
+	}
+
+	// act
+	err := shark.Hunt(&prey)
+
+	// assert
+	assert.NoError(t, err)
+	assert.False(t, shark.hungry)
+	assert.True(t, shark.tired)
+
 }
 
 func TestSharkCannotHuntBecauseIsTired(t *testing.T) {
