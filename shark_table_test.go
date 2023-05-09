@@ -41,8 +41,8 @@ func TestShark_Hunt_Errors(t *testing.T) {
 				speed:  20,
 			},
 			prey: &Prey{
-				name:  "",
-				speed: 0,
+				name:  "fish",
+				speed: 10,
 			},
 			expectedErr: ErrNotHungry,
 		},

@@ -25,6 +25,9 @@ type Prey struct {
 }
 
 func (s *Shark) Hunt(p *Prey) error {
+	if p == nil {
+		return ErrNotPrey
+	}
 	if s.tired {
 		return ErrTired
 	}
@@ -35,9 +38,6 @@ func (s *Shark) Hunt(p *Prey) error {
 		s.tired = true
 		return ErrPreyEscaped
 	} 
-	if p.name == "" && p.speed == 0 {
-		return ErrNotPrey
-	}
 
 	s.hungry = false
 	s.tired = true
